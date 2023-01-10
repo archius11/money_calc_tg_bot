@@ -1,2 +1,8 @@
 # money_calc_tg_bot
-bot for counting money in groups.
+Provides balance in group costs
+
+## quickstart
+- registrate new bot
+- create .env file at project root folder with:
+  BOT_TOKEN={token}
+- execute: python3 main.py
