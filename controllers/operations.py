@@ -17,10 +17,12 @@ def get_total_balance():
                         'balance': obj.balance
                         } for obj in balances]
 
-    if len(balances)>1:
+    if len(balances) > 1:
         second_balance = balances[1].balance
-    else:
+    elif len(balances) == 1:
         second_balance = balances[0].balance
+    else:
+        return [{'user': 'no balances yet', 'balance': 0}]
 
     for balance in balances_dicts:
         balance['balance'] -= second_balance
