@@ -58,14 +58,20 @@ class SetAmount(AddRecordBaseFilter):
 class SetComment(AddRecordBaseFilter):
 
     @staticmethod
+    async def get_report_text(user, amount, comment):
+        return f'{user} spent {amount}: {comment}'
+
+    @staticmethod
     async def callback(update, context):
         user_instances = UsersInstance()
         user_instances.set_value(update.effective_user, 'comment', update.effective_message.text)
-        add_record(user_instances.get_value(update.effective_user, 'user'),
-                   user_instances.get_value(update.effective_user, 'amount'),
-                   user_instances.get_value(update.effective_user, 'comment'))
+        user, amount, comment = user_instances.get_value(update.effective_user, 'user'),\
+                               user_instances.get_value(update.effective_user, 'amount'),\
+                               user_instances.get_value(update.effective_user, 'comment')
+        add_record(user, amount, comment)
+        report_text = await SetComment.get_report_text(user.name, amount, comment)
         user_instances.clear_instance(update.effective_user)
-        await context.bot.send_message(chat_id=update.effective_chat.id, text='record added',
+        await context.bot.send_message(chat_id=update.effective_chat.id, text=report_text,
                                        reply_markup=main_menu_buttons())
 
 

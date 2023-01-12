@@ -4,9 +4,7 @@ from models.db import db_session
 
 
 def add_record(user, amount, comment):
-    with db_session() as session:
-        Balance.create_balance_move(user, amount, comment)
-        session.commit()
+    Balance.create_balance_move(user, amount, comment)
 
 
 def get_total_balance():
