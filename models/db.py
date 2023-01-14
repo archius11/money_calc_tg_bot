@@ -26,8 +26,8 @@ def init_db():
             with conn.begin():  # Optional: start a transaction
                 conn.execute(text('ALTER TABLE %s ADD COLUMN %s %s' % (table_name, column_name, column_type)))
 
-    column = Column('chat_id', String)
-    add_column(db_engine, 'users', column)
+    # column = Column('chat_id', String)
+    # add_column(db_engine, 'users', column)
 
 
 def get_or_create(model, **kwargs):

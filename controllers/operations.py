@@ -29,6 +29,8 @@ def get_total_balance():
 
 
 def create_user(name, tg_id, chat_id):
-    user = User.get_or_create(name=name, tg_id=tg_id)
+    user = User.get_or_create(tg_id=tg_id)
+    user.name = name
     user.chat_id = chat_id
-    user.save()
+    db_session.add(user)
+    db_session.commit()

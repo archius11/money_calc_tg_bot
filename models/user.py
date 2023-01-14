@@ -6,8 +6,8 @@ class User(Model):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     tg_id = Column(Integer, unique=True)
-    name = Column(String, unique=True)
-    chat_id = Column(String, unique=True)
+    name = Column(String)
+    chat_id = Column(String)
 
     @staticmethod
     def get_or_create(**kwargs):

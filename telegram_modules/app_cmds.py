@@ -9,7 +9,7 @@ from telegram_modules.buttons.main_menu import main_menu_buttons
 @command_handler("start")
 async def start(update, context):
     user = update.effective_user
-    create_user(user.name, user.id, user.chat_id)
+    create_user(user.first_name, user.id, update.effective_chat.id)
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Select operation",
                                    reply_markup=main_menu_buttons())
 
