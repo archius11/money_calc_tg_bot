@@ -7,6 +7,7 @@ class User(Model):
     id = Column(Integer, primary_key=True)
     tg_id = Column(Integer, unique=True)
     name = Column(String, unique=True)
+    chat_id = Column(String, unique=True)
 
     @staticmethod
     def get_or_create(**kwargs):

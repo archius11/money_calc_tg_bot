@@ -28,5 +28,7 @@ def get_total_balance():
     return balances_dicts
 
 
-def create_user(name, tg_id):
+def create_user(name, tg_id, chat_id):
     user = User.get_or_create(name=name, tg_id=tg_id)
+    user.chat_id = chat_id
+    user.save()
