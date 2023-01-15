@@ -11,6 +11,10 @@ async def check_dysons():
     if result:
         for user in User.query.all():
             await bot_instance.bot.send_message(chat_id=user.chat_id, text=result, disable_notification=False)
+            for n in range(10):
+                await bot_instance.bot.send_message(chat_id=user.chat_id, text='WARNING!!!!', disable_notification=False)
+                sleep(1)
+
 
 def bg_task(loop):
 

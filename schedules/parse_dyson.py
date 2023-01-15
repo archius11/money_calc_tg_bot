@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup, Tag
 
-# url = 'https://www.dyson.com.tr/shop/sac-sekillendiricileri'
-url = 'https://www.dyson.com.tr/products/cord-free/dyson-v11-absolute-extra-vacuums'
+url = 'https://www.dyson.com.tr/shop/sac-sekillendiricileri'
+# url = 'https://www.dyson.com.tr/products/cord-free/dyson-v11-absolute-extra-vacuums'
 
 def parse_dyson():
     html = requests.get(url).content
