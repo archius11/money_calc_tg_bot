@@ -7,7 +7,7 @@ if __name__ == '__main__':
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
-    daemon = Thread(target=bg_task, args=(loop,), daemon=True, name='Background')
-    daemon.start()
+    # daemon = Thread(target=bg_task, args=(loop,), daemon=True, name='Background')
+    # daemon.start()
 
     bot_instance.run_polling()
