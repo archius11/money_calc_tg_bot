@@ -5,10 +5,9 @@ from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy import Column, String
 
-db_engine = create_engine('sqlite:////home/db/main.db', echo=True, future=True)
-db_session = scoped_session(sessionmaker(autocommit=True,
-                                         autoflush=True,
-                                         bind=db_engine))
+db_engine = create_engine('sqlite:///main.db', echo=True, future=True)
+db_engine = db_engine.execution_options(autocommit=True)
+db_session = scoped_session(sessionmaker(bind=db_engine))
 
 Model = declarative_base()
 Model.query = db_session.query_property()

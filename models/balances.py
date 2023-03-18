@@ -23,5 +23,7 @@ class Balance(Model):
 
         history = History(user=user, amount=amount, comment=comment)
         db_session.add(history)
+        db_session.commit()
+
 
 
