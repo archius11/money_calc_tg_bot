@@ -71,9 +71,9 @@ class SetComment(AddRecordBaseFilter):
         add_record(user, amount, comment)
         report_text = await SetComment.get_report_text(user.name, amount, comment)
         user_instances.clear_instance(update.effective_user)
-        for user in User.query.all():
-            await context.bot.send_message(chat_id=user.chat_id, text=report_text,
-                                           reply_markup=main_menu_buttons(), disable_notification=True)
+        # for user in User.query.all():
+        #     await context.bot.send_message(chat_id=user.chat_id, text=report_text,
+        #                                    reply_markup=main_menu_buttons(), disable_notification=True)
 
 
 class AddRecordFilters(Enum):
